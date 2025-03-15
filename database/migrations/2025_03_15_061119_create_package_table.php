@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('package', function (Blueprint $table) {
             $table->id();
-            $table->string('package_name')->nullable(false);
+            $table->string('package_name', 255)->nullable(false);
             $table->enum('event_type', ['wedding', 'birthday', 'meal'])->nullable(false);
-            $table->decimal('price', places: 2)->nullable(false);
+            $table->decimal('price', total:10, places: 2)->nullable(false);
             $table->text('description')->nullable(true);
             $table->timestamps();
         });

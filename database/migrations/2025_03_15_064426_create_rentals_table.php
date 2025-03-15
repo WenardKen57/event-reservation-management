@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('rentals', function (Blueprint $table) {
             $table->id();
-            $table->string('item_name')->nullable(false);
+            $table->string('item_name', 255)->nullable(false);
             $table->enum('category', ['scaffold', 'table', 'chair', 'fabric', 'kitchen', 'backdrop', 'others'])
             ->nullable(false);
             $table->decimal('price_per_unit', total:10, places:2)->nullable(false);

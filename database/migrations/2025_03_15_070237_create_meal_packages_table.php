@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('meal_packages', function (Blueprint $table) {
             $table->id();
-            $table->string('package_name')->nullable(false);
+            $table->string('package_name', 255)->nullable(false);
             $table->decimal('price_per_plate', total:10, places:2)->nullable(false);
             $table->text('included_dishes')->nullable(true);
             $table->timestamps();
