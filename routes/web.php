@@ -30,6 +30,8 @@ Route::middleware(['auth', 'role:customer'])->group(function () {
     ->name('customer.dashboard');
     Route::get('make-reservation', [CustomerController::class, 'make_reservation'])
     ->name('customer.make_reservation');
+    Route::post('store-reservation', [CustomerController::class, 'store_reservation'])
+    ->name('customer.store_reservation');
 });
 
 

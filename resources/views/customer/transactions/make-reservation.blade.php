@@ -9,6 +9,13 @@
     <label for="event_time">Event time:</label>
     <input type="time" name="event_time" require><br> 
 
+    <select name="package_id" id="package_id">
+        @foreach ($packages as $package)
+            <option value="{{ $package->id }}">{{ $package->package_name }}</option>
+        @endforeach
+        
+    </select>
+
     <label for="event_type">Event type:</label>
     <select name="event_type" id="event_type" require>
         <option value="wedding">Wedding</option>
