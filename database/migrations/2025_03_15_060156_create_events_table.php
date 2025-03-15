@@ -18,7 +18,6 @@ return new class extends Migration
             $table->date('event_date')->nullable(false);
             $table->time('event_time')->nullable(false);
             $table->enum('event_type', ['wedding', 'birthday', 'other'])->nullable(true);
-            $table->integer('package_id')->nullable(true);
             $table->integer('meal_package_id')->nullable(true);
             $table->integer('guest_count')->nullable(false);
             $table->enum('status', ['pending', 'confirmed', 'cancelled', 'completed'])->default('pending');
