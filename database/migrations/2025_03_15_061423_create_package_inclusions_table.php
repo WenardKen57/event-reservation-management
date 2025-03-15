@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('package_inclusions', function (Blueprint $table) {
             $table->id();
-            $table->integer('package_id')->nullable(true);
+            $table->foreignId('package_id')->constrained('package')->onDelete('cascade');
             $table->string('item_name')->nullable(false);
             $table->integer('quantity')->nullable(false);
             $table->timestamps();
@@ -26,5 +26,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('package_inclusions');
+        Schema::dropIfExists('package');
     }
 };
