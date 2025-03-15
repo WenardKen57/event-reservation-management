@@ -25,11 +25,11 @@ Route::get('/customer/dashboard', [CustomerController::class, 'dashboard'])
 ->name('customer.dashboard')
 ->middleware(['auth', 'role:customer']);
 
-/*
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
-*/
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
