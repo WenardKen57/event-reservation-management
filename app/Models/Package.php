@@ -11,4 +11,8 @@ class Package extends Model
     
     protected $table = 'package';
     protected $fillable = ['package_name', 'event_type', 'price', 'description'];
+    public function events()
+    {
+        return $this->hasMany(Event::class, 'package_id');
+    }
 }

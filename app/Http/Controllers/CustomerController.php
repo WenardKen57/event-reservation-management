@@ -9,7 +9,8 @@ use App\Models\Package;
 class CustomerController extends Controller
 {
     public function dashboard() {
-        return view('customer.dashboard');
+        $reservations = Event::where('users_id', auth()->id())->latest()->get();
+        return view('customer.dashboard', compact('reservations'));
     }
 
     public function make_reservation() {
