@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use Illuminate\Validation\Rules\Password;
 
 class ProfileController extends Controller
 {
@@ -16,9 +17,7 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): View
     {
-        return view('profile.edit', [
-            'user' => $request->user(),
-        ]);
+        return view('profile.edit', ['user' => Auth::user()]);
     }
 
     /**
@@ -26,15 +25,22 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
-        $request->user()->fill($request->validated());
+        $user = Auth::user();
 
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
-        }
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'email', 'max:255', 'unique:users,email,' . $user->id],
+            'password' => ['nullable', 'confirmed', Password::min(8)],
 
-        $request->user()->save();
+        ]);
 
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => $request->password ? bcrypt($request->password) : $user->password,
+        ]);
+
+        return back()->with('success', 'Profile updated successfully.');
     }
 
     /**
