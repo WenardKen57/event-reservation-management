@@ -36,7 +36,7 @@
                     <td>{{ $reservation->location }}</td>
                     <td>{{ $reservation->phone }}</td>
                     <td>{{ ucfirst($reservation->event_type) }}</td>
-                    <td>{{ optional($reservation->package_id)->package ?? 'N/A' }}</td>
+                    <td>{{ optional($reservation->package)->package_name ?? 'N/A' }}</td>
                 </tr>
             @endforeach
         </tbody>
