@@ -12,19 +12,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])
+    ->name('admin.dashboard');
+});
 
-Route::get('/superadmin/dashboard', [SuperAdminController::class, 'dashboard'])
-->name('superadmin.dashboard')
-->middleware(['auth', 'role:super_admin']);
+Route::middleware(['auth', 'role:super_admin'])->group(function () {
+    Route::get('/superadmin/dashboard', [SuperAdminController::class, 'dashboard'])
+    ->name('superadmin.dashboard');
+});
 
-Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])
-->name('admin.dashboard')
-->middleware(['auth', 'role:admin']);
-
-Route::get('/customer/dashboard', [CustomerController::class, 'dashboard'])
-->name('customer.dashboard')
-->middleware(['auth', 'role:customer']);
-
+Route::middleware(['auth', 'role:customer'])->group(function () {
+    Route::get('/customer/dashboard', [CustomerController::class, 'dashboard'])
+    ->name('customer.dashboard');
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
