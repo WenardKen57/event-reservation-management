@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('package', function (Blueprint $table) {
+        Schema::create('package_inclusions', function (Blueprint $table) {
             $table->id();
-            $table->string('package_name')->nullable(false);
-            $table->enum('event_type', ['wedding', 'birthday', 'meal'])->nullable(false);
-            $table->decimal('price', places: 2)->nullable(false);
-            $table->text('description')->nullable(true);
+            $table->integer('package_id')->nullable(true);
+            $table->string('item_name')->nullable(false);
+            $table->integer('quantity')->nullable(false);
             $table->timestamps();
         });
     }
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('package');
+        Schema::dropIfExists('package_inclusions');
     }
 };

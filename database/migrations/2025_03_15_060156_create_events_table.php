@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id')->nullable(true);
+            $table->foreignId('users_id')->constrained()->onDelete('cascade');
             $table->string('event_name')->nullable(false);
             $table->date('event_date')->nullable(false);
             $table->time('event_time')->nullable(false);
@@ -32,6 +32,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('events');
+        Schema::dropIfExists('events'); // Now drop the users table
+        
+        Schema::dropIfExists('users'); // Now drop the users table
+
     }
 };
