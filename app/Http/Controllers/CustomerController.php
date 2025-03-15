@@ -27,6 +27,7 @@ class CustomerController extends Controller
             'location' => 'required|string|max:255',
             'phone' => ['required', 'regex:/^(\+63|0)[9]\d{9}$/'], // Validate Philippine phone number format
             'event_type' => 'required|string|in:wedding,birthday,other',
+            'guest_count' => 'required|integer|min:1|max:500', // Min 1, Max 500 guests
             'package_id' => 'required|exists:package,id',
         ]);
 
