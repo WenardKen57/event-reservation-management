@@ -9,6 +9,8 @@
     <label for="event_time">Event time:</label>
     <input type="time" name="event_time" require><br>
 
+    
+
     <label for="event_type">Event type:</label>
     <select name="event_type" id="event_type" require>
         <option value="wedding">Wedding</option>
