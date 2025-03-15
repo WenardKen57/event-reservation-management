@@ -3,7 +3,7 @@
 
 <h2>Transactions</h2>
 <ul>
-    <li><a href="">Make reservation</a></li>
+    <li><a href="{{ route('customer.make_reservation') }}">Make reservation</a></li>
 </ul>
 
 <form method="POST" action="{{ route('logout') }}">

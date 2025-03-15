@@ -28,6 +28,8 @@ Route::middleware(['auth', 'role:super_admin'])->group(function () {
 Route::middleware(['auth', 'role:customer'])->group(function () {
     Route::get('/customer/dashboard', [CustomerController::class, 'dashboard'])
     ->name('customer.dashboard');
+    Route::get('make-reservation', [CustomerController::class, 'make_reservation'])
+    ->name('customer.make_reservation');
 });
 
 
