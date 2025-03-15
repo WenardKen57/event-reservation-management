@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <script>
         document.addEventListener('DOMContentLoaded', function () {
 
@@ -40,6 +40,12 @@
 
         <label for="event_time">Event time:</label>
         <input type="time" name="event_time" require><br> 
+
+        <label for="location">Where will the event take place?</label>
+        <input type="text" name="location" require><br>
+
+        <label for="location">Phone number (+63):</label>
+        <input type="text" name="phone" require><br>
 
         <label for="event_type">Select type of event</label>
         <select name="event_type" id="event_type" require>
