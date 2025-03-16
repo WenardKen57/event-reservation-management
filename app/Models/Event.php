@@ -12,7 +12,7 @@ class Event extends Model
     
     protected $table = 'events';
     protected $fillable = ['users_id', 'event_name', 'event_date', 'event_time', 'location', 'phone',
-     'event_type', 'guest_count', 'guest_count', 'status', 'total_price', 'package_id'];
+     'event_type', 'guest_count', 'guest_count', 'status', 'total_price', 'package_id', 'meal_packages_id'];
 
     public function package()
     {
