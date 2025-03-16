@@ -12,6 +12,11 @@ class RentalTransaction extends Model
         'users_id', 'rentals_id', 'rental_date', 'return_date', 'quantity', 'total_price'
     ];
 
+    public function transaction()
+    {
+        return $this->morphOne(Transaction::class, 'transactionable');
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);

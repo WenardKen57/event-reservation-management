@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('users_id')->nullable(false)->constrained()->onDelete('cascade');
+            $table->morphs('transactionable'); // Links to rental, event, or meal transaction
             $table->timestamp('transaction_date')->useCurrent();
             $table->decimal('total_price', total:10, places:2)->default(0);
             $table->enum('status', ['pending', 'paid', 'cancelled'])->default('pending');

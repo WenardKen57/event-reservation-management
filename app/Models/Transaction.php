@@ -11,26 +11,11 @@ class Transaction extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id', 'event_id', 'rental_id', 'meal_package_id', 'status', 'total_amount'
+        'users_id', 'transactionable_id', 'transactionable_type', 'events_id', 'rentals_id', 'meal_package_id', 'status', 'total_amount'
     ];
-
-    public function user()
+    public function transactionable()
     {
-        return $this->belongsTo(User::class);
+        return $this->morphTo();
     }
 
-    public function event()
-    {
-        return $this->belongsTo(Event::class);
-    }
-
-    public function rental()
-    {
-        return $this->belongsTo(Rental::class);
-    }
-
-    public function mealPackage()
-    {
-        return $this->belongsTo(MealPackage::class);
-    }
 }
