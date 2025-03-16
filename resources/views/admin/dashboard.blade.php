@@ -21,6 +21,7 @@
                 <th>Phone</th>
                 <th>Event Type</th>
                 <th>Package</th>
+                <th>Reservation status</th>
                 <th colspan="2">Actions</th>
             </tr>
         </thead>
@@ -34,6 +35,7 @@
                     <td>{{ $reservation->phone }}</td>
                     <td>{{ ucfirst($reservation->event_type) }}</td>
                     <td>{{ optional($reservation->package)->package_name ?? 'N/A' }}</td>
+                    <td>{{ $reservation->status }}</td>
                     <td>
                         @if($reservation->status != 'approved')
                             <form method="POST" action="{{ route('reservation.approve', $reservation->id) }}" style="display:inline;">
