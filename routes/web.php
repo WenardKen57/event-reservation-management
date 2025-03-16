@@ -18,6 +18,7 @@ Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])
     ->name('admin.dashboard');
+    
 });
 
 Route::middleware(['auth', 'role:super_admin'])->group(function () {
