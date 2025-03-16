@@ -22,7 +22,7 @@ return new class extends Migration
             $table->enum('event_type', ['wedding', 'birthday', 'other'])->nullable(true);
             $table->integer('guest_count')->nullable(false);
             $table->enum('status', ['pending', 'confirmed', 'cancelled', 'completed'])->default('pending');
-            $table->decimal('total_price', total:10, places: 2);
+            $table->decimal('total_price', total:10, places: 2)->default(0);
             $table->timestamps();
         });
     }
