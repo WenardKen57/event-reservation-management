@@ -18,7 +18,10 @@ Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])
     ->name('admin.dashboard');
-    
+    Route::post('{reservation}/approve', [AdminController::class, 'approve'])
+    ->name('reservation.approve');
+    Route::post('{reservation}/disapprove', [AdminController::class, 'disapprove'])
+    ->name('reservation.disapprove');
 });
 
 Route::middleware(['auth', 'role:super_admin'])->group(function () {

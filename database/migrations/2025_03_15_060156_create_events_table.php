@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('phone', 12)->nullable(false);
             $table->enum('event_type', ['wedding', 'birthday', 'other'])->nullable(true);
             $table->integer('guest_count')->nullable(false);
-            $table->enum('status', ['pending', 'confirmed', 'cancelled', 'completed'])->default('pending');
+            $table->enum('status', ['pending', 'confirmed', 'cancelled', 'completed', 'approved', 'disapproved'])->default('pending');
             $table->decimal('total_price', total:10, places: 2)->default(0);
             $table->timestamps();
         });

@@ -25,6 +25,7 @@
                 <th>Phone</th>
                 <th>Event Type</th>
                 <th>Package</th>
+                <th>Reservation status</th>
             </tr>
         </thead>
         <tbody>
@@ -37,6 +38,7 @@
                     <td>{{ $reservation->phone }}</td>
                     <td>{{ ucfirst($reservation->event_type) }}</td>
                     <td>{{ optional($reservation->package)->package_name ?? 'N/A' }}</td>
+                    <td>{{ $reservation->status }}</td>
                 </tr>
             @endforeach
         </tbody>
