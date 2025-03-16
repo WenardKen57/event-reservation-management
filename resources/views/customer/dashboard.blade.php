@@ -3,7 +3,9 @@
 
 <h2>Transactions</h2>
 <ul>
+    <li><a href="{{ route('customer.rentals.index') }}">Rentals</a></li>
     <li><a href="{{ route('customer.make_reservation') }}">Make reservation</a></li>
+    <li><a href="">Meal package</a></li>
 </ul>
 
 <form method="POST" action="{{ route('logout') }}">

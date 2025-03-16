@@ -1,6 +1,4 @@
 <?php
-
-
 use App\Http\Controllers\ProfileController;
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
@@ -8,6 +6,8 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SuperAdminController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\RentalController;
 
 Route::get('/', function () {
     return view('homepage');
@@ -39,6 +39,16 @@ Route::middleware(['auth', 'role:customer'])->group(function () {
 
     Route::post('/store-reservation', [CustomerController::class, 'store_reservation'])
     ->name('customer.store_reservation');
+
+    Route::get('/rentals', [RentalController::class, 'index'])
+    ->name('customer.rentals.index');
+
+    Route::post('/rentals', [RentalController::class, 'store'])
+    ->name('customer.rentals.store');
+
+    Route::get('/transactions', [TransactionController::class, 'index'])->name('transactions.index');
+    Route::post('/transactions', [TransactionController::class, 'store'])->name('transactions.store');
+
 });
 
 
