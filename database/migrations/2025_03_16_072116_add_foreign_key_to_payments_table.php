@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('payments', function (Blueprint $table) {
             $table->foreignId('transactions_id')->nullable(false)
-            ->constrained()
+            ->constrained('transactions')
             ->onDelete('cascade');
         });
     }
@@ -24,7 +24,10 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('payments', function (Blueprint $table) {
-            //
+            $table->dropForeign(['transactions_id']); // Drop using the correct column name
+            $table->dropColumn('transactions_id'); // Remove column
         });
+
+        Schema::dropIfExists('payments');
     }
 };

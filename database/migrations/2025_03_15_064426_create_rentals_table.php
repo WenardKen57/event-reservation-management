@@ -17,7 +17,6 @@ return new class extends Migration
             $table->enum('category', ['scaffold', 'table', 'chair', 'fabric', 'kitchen', 'backdrop', 'others'])
             ->nullable(false);
             $table->decimal('price_per_unit', total:10, places:2)->nullable(false);
-            $table->
             $table->timestamps();
         });
     }

@@ -42,7 +42,6 @@ Route::middleware(['auth', 'role:customer'])->group(function () {
 
     Route::get('/rentals', [RentalController::class, 'index'])
     ->name('customer.rentals.index');
-
     Route::post('/rentals', [RentalController::class, 'store'])
     ->name('customer.rentals.store');
 
